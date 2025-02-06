@@ -3,12 +3,13 @@ using SocietNet.PLL.Views;
 
 namespace SocietNet;
 /// <summary>
-/// yes, it's a play on english word "society" and russin word "сосед"
+/// yes, it's a play on english word "society" and russian word "сосед"
 /// </summary>
 class Program
 {
     public static UserService userService = new UserService();
     public static MessageService messageService = new MessageService();
+    public static FiendService fiendService = new FiendService();
 
     public static MainView mainView = new MainView();
     public static RegistrationView registrationView = new RegistrationView(userService);
@@ -19,6 +20,10 @@ class Program
     public static MessageSendingView messageSendingView = new MessageSendingView(userService, messageService);
     public static MessageOutcomingView messageOutcomingView = new MessageOutcomingView(userService, messageService);
     public static MessageIncomingView messageIncomingView = new MessageIncomingView(userService, messageService);
+    public static FiendViewingView fiendViewingView = new FiendViewingView(fiendService, userService);
+    public static FiendDetailedView fiendDetailedView = new FiendDetailedView(userService);
+    public static FiendAddingView fiendAddingView = new FiendAddingView(userService, fiendService);
+    public static FiendRemovingView fiendRemovingView = new FiendRemovingView(fiendService);
 
     static void Main() { mainView.Display(); }
 }

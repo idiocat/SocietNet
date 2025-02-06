@@ -19,12 +19,12 @@ public class UserMenuView
             {
                 case "D1" or "NumPad1": Program.userInfoView.Display(user); break;
                 case "D2" or "NumPad2": Program.userUpdateView.Display(user); break;
-                case "D3" or "NumPud3": throw new NotImplementedException(); //Program.fiendViewingView.Display(); break;
-                case "D4" or "NumPud4": Program.messageSendingView.Display(user); break;
-                case "D5" or "NumPud5": Program.messageIncomingView.Display(user); break;
-                case "D6" or "NumPud6": Program.messageOutcomingView.Display(user); break;
+                case "D3" or "NumPad3": Program.fiendViewingView.Display(user); break;
+                case "D4" or "NumPad4": Program.messageSendingView.Display(user); break;
+                case "D5" or "NumPad5": Program.messageIncomingView.Display(user); break;
+                case "D6" or "NumPad6": Program.messageOutcomingView.Display(user); break; // <= social stairway
 
-                case "D0" or "NumPud0": return;
+                case "D0" or "NumPad0": return;
             }
         }
     }
