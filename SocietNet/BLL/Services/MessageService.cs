@@ -1,4 +1,5 @@
-﻿using SocietNet.BLL.Models;
+﻿using System.Linq;
+using SocietNet.BLL.Models;
 using SocietNet.DAL.Entities;
 using SocietNet.DAL.Repos;
 
@@ -16,4 +17,10 @@ public class MessageService
         MessageEntity messageEntity = new MessageEntity() { teller_id = messageForm.TellerId, listener_id = messageForm.ListenerId, content = messageForm.Content };
         messageRepo.Create(messageEntity);
     }
+
+    public List<Message> GetIncomingMessages(User user) => messageRepo.FindByListenerId(user.Id)
+                                                                    .Select(m => new Message(m.id, m.teller_id, m.listener_id, m.content)).ToList();
+
+    public List<Message> GetOutcomingMessages(User user) => messageRepo.FindByTellerId(user.Id)
+                                                                    .Select(m => new Message(m.id, m.teller_id, m.listener_id, m.content)).ToList();
 }

@@ -15,22 +15,28 @@ public class MessageSendingView
         this.messageService = messageService;
     }
 
-    public void Display(User user)
+    public void Display(User user, int? listenerId = null)
     {
         while (true)
         {
             MessageForm messageForm = new MessageForm();
             messageForm.TellerId = user.Id;
 
-            Console.Write("To (soap): ");
-            try { messageForm.ListenerId = userService.FindBySoap(Console.ReadLine()).Id; }
-            catch (UserNotFoundException) { InRed.WriteLine("No societ with such soap."); }
-            
+            if (listenerId != null) { messageForm.ListenerId = (int)listenerId; }
+            else
+            {
+                Console.Write("To (soap): ");
+                try { messageForm.ListenerId = userService.FindBySoap(Console.ReadLine()).Id; }
+                catch (UserNotFoundException) { InRed.WriteLine("No societ with such soap."); }
+                catch (Exception ex) { Console.WriteLine("Something went awfully wrong. Please consult your shrink."); Console.WriteLine(ex.Message); }
+            }
+
             Console.Write("Message (up to 5k symbols): ");
             messageForm.Content = Console.ReadLine();
             try { messageService.SendMessage(messageForm); InGreen.WriteLine("Message sent."); }
             catch (ArgumentNullException) { InRed.WriteLine("Too short."); }
             catch (ArgumentOutOfRangeException) { InRed.WriteLine("Too long."); }
+            catch (Exception ex) { Console.WriteLine("Something went awfully wrong. Please consult your shrink."); Console.WriteLine(ex.Message); }
 
             if (!Repeater.Repeat()) { break; }
         }

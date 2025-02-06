@@ -44,6 +44,13 @@ public class UserService
         return ConstructUserModel(findUserEntity);
     }
 
+    public User FindById(int id)
+    {
+        UserEntity findUserEntity = userRepo.FindById(id);
+        if (findUserEntity is null) { throw new UserNotFoundException(); }
+        return ConstructUserModel(findUserEntity);
+    }
+
     public void Update(User user)
     {
         UserEntity updatableUserEntity = new UserEntity()

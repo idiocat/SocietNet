@@ -28,6 +28,7 @@ public class AuthenticationView
             }
             catch (WrongCusswordException) { InRed.WriteLine("Don't cuss like that! So improper."); }
             catch (UserNotFoundException) { InRed.WriteLine("No societ with such soap."); }
+            catch (Exception ex) { Console.WriteLine("Something went awfully wrong. Please consult your shrink."); Console.WriteLine(ex.Message); }
 
             if (!Repeater.Repeat()) { break; }
 

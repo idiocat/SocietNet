@@ -17,8 +17,8 @@ class Program
     public static UserInfoView userInfoView = new UserInfoView();
     public static UserUpdateView userUpdateView = new UserUpdateView();
     public static MessageSendingView messageSendingView = new MessageSendingView(userService, messageService);
-    public static MessageOutcomingView messageOutcomingView = new MessageOutcomingView();
-    public static MessageIncomingView messageIncomingView = new MessageIncomingView();
+    public static MessageOutcomingView messageOutcomingView = new MessageOutcomingView(userService, messageService);
+    public static MessageIncomingView messageIncomingView = new MessageIncomingView(userService, messageService);
 
     static void Main() { mainView.Display(); }
 }
