@@ -17,9 +17,9 @@ public class FiendDetailedView
             $"Favourite EPUB: {fiend.FavEpub};\n" +
             $"Soap: {fiend.Soap};\n");
         InYellow.WriteLine("Type 1 to send a message;\n" +
-            "Type 3 to remove fiend;/n" +
+            "Type 3 to remove fiend;\n" +
             "Type 0 to go back.");
-        switch (Console.ReadKey().Key.ToString())
+        switch (Console.ReadKey(true).Key.ToString())
         {
             case "D1" or "NumPad1": Program.messageSendingView.Display(user, fiendId); break;
             case "D3" or "NumPad3": Program.fiendRemovingView.Display(user, fiend); break;

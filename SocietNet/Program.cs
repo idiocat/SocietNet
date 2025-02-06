@@ -5,7 +5,7 @@ namespace SocietNet;
 /// <summary>
 /// yes, it's a play on english word "society" and russian word "сосед"
 /// </summary>
-class Program
+public class Program
 {
     public static UserService userService = new UserService();
     public static MessageService messageService = new MessageService();

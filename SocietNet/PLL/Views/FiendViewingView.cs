@@ -16,11 +16,11 @@ public class FiendViewingView
     public void Display(User user)
     {
         List<Fiend>? fiendsList = fiendService.GetFiendsList(user);
-        if (fiendsList == null)
+        if (fiendsList.Count == 0 || fiendsList is null)
         {
             InRed.WriteLine("You have no fiends!");
             InYellow.WriteLine("Add a fiend? [y/n] ");
-            if (Console.ReadKey(true).Key.ToString() == "89") { Program.fiendAddingView.Display(user); }
+            if (Console.ReadKey(true).Key.ToString() == "Y") { Program.fiendAddingView.Display(user); }
         }
         else
         {
@@ -85,11 +85,11 @@ public class FiendViewingView
                         catch (ArgumentOutOfRangeException) { }
                         break;
 
-                    case "69"/* E */: pages.Current++; break; 
-                    case "81"/* Q */: pages.Current--; break; 
-                    case "65"/* A */: Program.fiendAddingView.Display(user); break; 
+                    case "E": pages.Current++; break; 
+                    case "Q": pages.Current--; break; 
+                    case "A": Program.fiendAddingView.Display(user); break; 
                     
-                    case "87"/* W */: return;
+                    case "W": return;
                 }
             }
         }

@@ -17,11 +17,13 @@ public class MessageOutcomingView
     public void Display(User user)
     {
         List<Message> messages = messageService.GetOutcomingMessages(user);
+        if (messages.Count == 0) { InYellow.WriteLine("No messages were sent."); return; }
         foreach (Message message in messages)
         {
             User listener = userService.FindById(message.ListenerId);
             Console.WriteLine($"To: {listener.Soap} ({listener.Frontname} {listener.Lastname})\n {message.Content}");
             Console.Write(Environment.NewLine);
+            AnyKey.WaitFor();
         }
     }
 }

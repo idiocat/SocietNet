@@ -2,14 +2,14 @@
 
 public class User
 {
-    public int Id { get; }
-    public string Frontname { get; set; }
-    public string Lastname { get; set; }
-    public string Cussword { get; set; }
-    public string Soap { get; set; }
-    public string Pic { get; set; }
-    public string FavMkv { get; set; }
-    public string FavEpub { get; set; }
+    public virtual int Id { get; }
+    public virtual string Frontname { get; set; }
+    public virtual string Lastname { get; set; }
+    public virtual string Cussword { get; set; }
+    public virtual string Soap { get; set; }
+    public virtual string Pic { get; set; }
+    public virtual string FavMkv { get; set; }
+    public virtual string FavEpub { get; set; }
     public User(
         int id,
         string frontname,

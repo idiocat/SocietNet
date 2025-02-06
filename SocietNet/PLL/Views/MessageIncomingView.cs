@@ -17,12 +17,13 @@ public class MessageIncomingView
     public void Display(User user)
     { 
         List<Message> messages = messageService.GetIncomingMessages(user);
+        if (messages.Count == 0) { InYellow.WriteLine("No messages were recieved."); return; }
         foreach (Message message in messages)
         {
             User teller = userService.FindById(message.TellerId);
             Console.WriteLine($"From: {teller.Soap} ({teller.Frontname} {teller.Lastname})\n {message.Content}");
             InYellow.WriteLine("Reply? [y/n] ");
-            if (Console.ReadKey(true).Key.ToString() == "89") { Program.messageSendingView.Display(user, teller.Id); }
+            if (Console.ReadKey(true).Key.ToString() == "Y") { Program.messageSendingView.Display(user, teller.Id); }
             Console.Write(Environment.NewLine);
         }
     }
